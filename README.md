@@ -1,6 +1,6 @@
 # PyAnalysis: Python Code Structure Analyzer
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/AlexandrosLiaskos/pyanalysis) 
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/AlexandrosLiaskos/PyAnalysis) 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 
 PyAnalysis is a command-line tool and library designed to analyze the structure of Python source code files. It leverages Python's built-in Abstract Syntax Trees (AST) module to parse the code and extracts detailed information about its components. The results are presented in a clean, structured JSON format.
@@ -50,8 +50,8 @@ This tool is useful for:
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/your_username/pyanalysis.git # Replace with actual URL
-    cd pyanalysis
+    git clone https://github.com/AlexandrosLiaskos/PyAnalysis.git 
+    cd PyAnalysis
     ```
 
 2.  **Install the package:**
