@@ -1,0 +1,3 @@
+
+[clipboard]
+pyperclip>=1.8

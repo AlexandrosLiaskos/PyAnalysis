@@ -1,0 +1,49 @@
+# ---- File: pyproject.toml ----
+
+[build-system]
+requires = ["setuptools>=42"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyanalyzer"
+version = "1.0.0"
+description = "A Python code structure analyzer using AST."
+readme = "README.md"
+requires-python = ">=3.7"
+license = "MIT"
+license-files = ["LICENSE"] 
+authors = [
+  { name = "Alexandros Liaskos", email = "alexliaskosga@gmail.com" },
+]
+keywords = ["python", "ast", "analysis", "code", "structure", "cli", "parser"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: Utilities",
+    "Environment :: Console",
+    "Operating System :: OS Independent",
+    "Typing :: Typed",
+]
+
+dependencies = [
+    # No external dependencies required for core analysis
+]
+
+[project.urls]
+Homepage = "https://github.com/AlexandrosLiaskos/pyanalysis" 
+Repository = "https://github.com/AlexandrosLiaskos/pyanalysis" 
+
+[project.optional-dependencies]
+clipboard = ["pyperclip>=1.8"]
+
+[project.entry-points."console_scripts"]
+pyanalyzer = "pyanalyzer.cli:main"
