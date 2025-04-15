@@ -5,7 +5,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-build/
+/build/
 develop-eggs/
 dist/
 downloads/
@@ -18,7 +18,7 @@ sdist/
 var/
 wheels/
 *.egg-info/
-pyanalyzer.egg-info/
+/pyanalyzer.egg-info/
 .installed.cfg
 *.egg
 
