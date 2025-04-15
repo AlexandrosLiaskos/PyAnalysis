@@ -1,7 +1,6 @@
 # PyAnalysis: Python Code Structure Analyzer
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/your_username/pyanalysis) 
-[![PyPI version](https://img.shields.io/pypi/v/pyanalysis)](https://pypi.org/project/pyanalysis/) 
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/AlexandrosLiaskos/pyanalysis) 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 
 PyAnalysis is a command-line tool and library designed to analyze the structure of Python source code files. It leverages Python's built-in Abstract Syntax Trees (AST) module to parse the code and extracts detailed information about its components. The results are presented in a clean, structured JSON format.
@@ -33,7 +32,8 @@ This tool is useful for:
         *   Decorators.
         *   Methods (instance methods, class methods, static methods, properties).
         *   Class variables.
-        *   Instance variables (identified via `self.x` assignments).
+        *   Instance variables (identified via `self.x` assignments in instance methods).
+        *   Class variables (identified via `cls.x` assignments in class/static methods or direct assignments in the class body).
         *   Docstrings.
     *   Detection of `if __name__ == "__main__":` blocks.
 *   **JSON Output:** Provides results in a structured JSON format, suitable for machine reading or easy human inspection.
@@ -133,12 +133,12 @@ except Exception as e:
 
 ## Output Format
 
-The tool outputs a JSON object containing the analysis results. Keys with `None` values are automatically removed from the output for clarity, unless it's the `analysis_error` field itself. Lists of variables, imports, etc., are sorted by line number and then by name for consistent output.
+The tool outputs a JSON object containing the analysis results. Keys with `None` values are automatically removed from the output for clarity. Lists of variables, imports, etc., are sorted by line number and then by name for consistent output.
 
 **Top-Level Keys:**
 
 *   `filepath`: Absolute path to the analyzed file.
-*   `analysis_error`: String containing an error message if file/syntax/analysis errors occurred, otherwise omitted.
+*   `analysis_error`: String containing an error message if file/syntax/analysis errors occurred, otherwise the key is omitted.
 *   `module_docstring`: The docstring of the module, if present.
 *   `imports`: List of `import x` statements. Each item has `name`, `alias`, `line`.
 *   `from_imports`: Dictionary where keys are module names (`.` prefix for relative imports) and values are lists of imported items. Each item has `name`, `alias`, `line`.
@@ -188,7 +188,6 @@ Items within `functions` and `classes` (and their nested counterparts like `meth
   "imports": [
     {
       "name": "os",
-      "alias": null,
       "line": 3
     }
   ],
@@ -196,12 +195,10 @@ Items within `functions` and `classes` (and their nested counterparts like `meth
     "typing": [
       {
         "name": "List",
-        "alias": null,
         "line": 4
       },
       {
         "name": "Optional",
-        "alias": null,
         "line": 4
       }
     ]
@@ -222,7 +219,6 @@ Items within `functions` and `classes` (and their nested counterparts like `meth
         {
           "name": "data",
           "type": "List[str]",
-          "default": null,
           "kind": "POSITIONAL_OR_KEYWORD"
         },
         {
@@ -237,7 +233,6 @@ Items within `functions` and `classes` (and their nested counterparts like `meth
       "local_vars": [
         {
           "name": "result",
-          "type": null,
           "line": 11
         }
       ],
@@ -284,4 +279,4 @@ Contributions are welcome! If you find a bug or have a feature request, please o
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
+This project is licensed under the MIT License.
